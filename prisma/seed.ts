@@ -50,18 +50,55 @@ const userData: Prisma.UserCreateInput[] = [
   },
 ];
 
+const deliveryData: Prisma.DeliveryCreateInput[] = [
+  {
+    hospital: 'City Hospital',
+    deviceName: 'Heart Monitor',
+    status: 'PENDING',
+  },
+  {
+    hospital: 'General Hospital',
+    deviceName: 'X-Ray Machine',
+    status: 'IN_TRANSIT',
+    updatedAt: new Date(Date.now() - 48 * 60 * 60 * 1000), // 48 hours ago
+  },
+  {
+    hospital: 'Central Clinic',
+    deviceName: 'Ultrasound Device',
+    status: 'DELIVERED',
+  },
+  {
+    hospital: 'Downtown Medical Center',
+    deviceName: 'MRI Scanner',
+    status: 'PENDING',
+    updatedAt: new Date(Date.now() - 48 * 60 * 60 * 1000), // 48 hours ago
+  },
+  {
+    hospital: 'Suburban Health Facility',
+    deviceName: 'CT Scanner',
+    status: 'IN_TRANSIT',
+  },
+];
+
 async function main() {
   console.log(`Start seeding ...`);
 
   // Clear existing data
   await prisma.post.deleteMany();
   await prisma.user.deleteMany();
+  await prisma.delivery.deleteMany();
 
   for (const u of userData) {
     const user = await prisma.user.create({
       data: u,
     });
     console.log(`Created user with id: ${user.id}`);
+  }
+  for (const d of deliveryData) {
+    const delivery = await prisma.delivery.create({
+      data: d,
+    });
+    console.log(`Created delivery with id: ${delivery.id}`);
   }
   console.log(`Seeding finished.`);
 }

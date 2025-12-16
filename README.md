@@ -97,6 +97,7 @@ src/
 The initial domain is composed of:
 
 * **User** (aggregate root)
+* **Delivery** (aggregate root)
 * **Post** (belongs to User – planned)
 * **Comment** (belongs to Post – planned)
 
@@ -188,6 +189,7 @@ Prisma Migrate is the only mechanism used to manage schema changes.
 
 * `prisma migrate dev` → local development
 * `prisma migrate deploy` → CI / production
+* `prisma db seed` is intentionally reset seed.
 * `db push` is intentionally avoided to guarantee schema history.
 
 ---

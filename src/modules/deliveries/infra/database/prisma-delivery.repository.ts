@@ -1,7 +1,7 @@
 import { Delivery } from '@modules/deliveries/domain/entities/delivery.entity';
 import { PrismaService } from '@shared/database/prisma/prisma.service';
 import { Injectable } from '@nestjs/common';
-import { IDeliveryRepository } from '@modules/deliveries/domain/interfaces/delivery-repository.interface';
+import { IDeliveryRepository, FindAllDeliveriesFilter } from '@modules/deliveries/domain/interfaces/delivery-repository.interface';
 
 @Injectable()
 export class PrismaDeliveryRepository implements IDeliveryRepository {
@@ -11,8 +11,12 @@ export class PrismaDeliveryRepository implements IDeliveryRepository {
     return new PrismaDeliveryRepository(trx as PrismaService);
   }
 
-  async all(): Promise<Delivery[]> {
-    const delivery = await this.prisma.delivery.findMany();
+  async all(filter?: FindAllDeliveriesFilter): Promise<Delivery[]> {
+    const delivery = await this.prisma.delivery.findMany({
+      where: {
+        status: filter?.status,
+      },
+    });
     return delivery.map((delivery) => this.toDomain(delivery));
   }
 

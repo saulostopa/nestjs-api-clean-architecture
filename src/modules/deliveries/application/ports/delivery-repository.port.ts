@@ -1,10 +1,10 @@
 import { Delivery } from '@modules/deliveries/domain/entities/delivery.entity';
 import { DeliveryStatus } from '@modules/deliveries/domain/entities/delivery-status.interface';
+
 export interface FindAllDeliveriesFilter {
   status?: DeliveryStatus;
 }
-export interface IDeliveryRepository {
-  all(filter?: FindAllDeliveriesFilter): Promise<Delivery[]>;
-  
-  withTransaction(trx: unknown): IDeliveryRepository;
+
+export interface DeliveryRepository {
+  findAll(filter?: FindAllDeliveriesFilter): Promise<Delivery[]>;
 }

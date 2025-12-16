@@ -1,0 +1,83 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Nest JS API
+meta:
+  id: wrk_2bbae3d5c8c44ae9a78b9f6bc5238ea1
+  created: 1765892305331
+  modified: 1765892305331
+  description: ""
+collection:
+  - name: Delivery
+    meta:
+      id: fld_931291b544624701bd48151312cc744b
+      created: 1765922473190
+      modified: 1765922473190
+      sortKey: -1765922473190
+      description: ""
+    children:
+      - url: http://localhost:3000/deliveries
+        name: listAll
+        meta:
+          id: req_ce9fa71c120f4307bfeba1d0b2edd21b
+          created: 1765921282528
+          modified: 1765922635955
+          isPrivate: false
+          description: ""
+          sortKey: -1765922490378
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/deliveries?status=IN_TRANSIT
+        name: listAllWithFilter
+        meta:
+          id: req_9f2616db4c0540bea5cfd77362bfe36c
+          created: 1765922523235
+          modified: 1765922642228
+          isPrivate: false
+          description: ""
+          sortKey: -1754850226749.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: User
+    meta:
+      id: fld_c908ad6966a444d4be6216325ef0c56e
+      created: 1765922482912
+      modified: 1765922482912
+      sortKey: -1765922482912
+      description: ""
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_6446b9681ec25a9548ec6303dc758faca3070350
+    created: 1765892305333
+    modified: 1765892305333
+environments:
+  name: Base Environment
+  meta:
+    id: env_6446b9681ec25a9548ec6303dc758faca3070350
+    created: 1765892305332
+    modified: 1765892305332
+    isPrivate: false
