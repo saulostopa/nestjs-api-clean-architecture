@@ -11,10 +11,14 @@ export class PrismaDeliveryRepository implements IDeliveryRepository {
     return new PrismaDeliveryRepository(trx as PrismaService);
   }
 
-  async all(filter?: FindAllDeliveriesFilter): Promise<Delivery[]> {
+  async all({status, limit}: FindAllDeliveriesFilter): Promise<Delivery[]> {
     const delivery = await this.prisma.delivery.findMany({
       where: {
-        status: filter?.status,
+        status: status,
+      },
+      take: limit,
+      orderBy: {
+        updatedAt: 'desc',
       },
     });
     return delivery.map((delivery) => this.toDomain(delivery));
