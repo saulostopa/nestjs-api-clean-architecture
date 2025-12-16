@@ -1,6 +1,7 @@
-import { Controller, Get, Param, Body, HttpCode } from '@nestjs/common';
+import { Controller, Get, Param, Body, HttpCode, Query } from '@nestjs/common';
 import { StatusCode } from '@shared/infra/http/status';
 import { ListDeliveriesService } from '@modules/deliveries/application/use-cases/find-all-deliveries.use-case';
+import { DeliveryStatus } from '@modules/deliveries/domain/entities/delivery-status.interface';
 
 @Controller('deliveries')
 export class DeliveriesController {
@@ -10,8 +11,12 @@ export class DeliveriesController {
 
   @Get()
   @HttpCode(StatusCode.Ok)
-  async findAll() {
-    return this.listDeliveries.execute();
+  async findAll(
+    @Query('status') status?: DeliveryStatus,
+  ) {
+    return this.listDeliveries.execute(
+      status ? status.toUpperCase() as DeliveryStatus : undefined,
+    );
   }
 
   
