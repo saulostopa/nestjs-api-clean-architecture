@@ -7,8 +7,8 @@
   "author": "",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "npx prisma generate && nest build",
-    "postinstall": "npx prisma generate",
+    "build": "nest build",
+    "postinstall": "prisma generate",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "dev": "nest start --watch",
