@@ -1,0 +1,2 @@
+process.env.TESTCONTAINERS_RYUK_DISABLED = 'true';
+process.env.TESTCONTAINERS_CHECKS_DISABLE = 'true';
