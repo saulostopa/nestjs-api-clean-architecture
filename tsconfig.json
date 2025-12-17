@@ -9,7 +9,7 @@
     "target": "es2023",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "incremental": true,
 
     // "skipLibCheck": true,
@@ -20,12 +20,12 @@
     // "noFallthroughCasesInSwitch": false,
     "paths": {
       "@prisma-generated/*": ["prisma/generated/*"],
-      "@config/*": ["src/config/*"],
-      "@modules/*": ["src/modules/*"],
-      "@shared/*": ["src/shared/*"],
+      "@config/*": ["config/*"],
+      "@modules/*": ["modules/*"],
+      "@shared/*": ["shared/*"],
 
-      "@users/*": ["src/modules/users/*"],
-      "@delivery/*": ["src/modules/deliveries/*"],
+      "@users/*": ["modules/users/*"],
+      "@delivery/*": ["modules/deliveries/*"],
     }
   }
 }
