@@ -1,31 +1,37 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
+    
     "target": "es2023",
-    "sourceMap": true,
+    
+    "rootDir": "./src",
     "outDir": "./dist",
     "baseUrl": "./src",
-    "incremental": true,
-
-    // "skipLibCheck": true,
-    // "strictNullChecks": true,
-    // "forceConsistentCasingInFileNames": true,
-    // "noImplicitAny": false,
-    // "strictBindCallApply": false,
-    // "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@prisma-generated/*": ["prisma/generated/*"],
       "@config/*": ["config/*"],
       "@modules/*": ["modules/*"],
       "@shared/*": ["shared/*"],
-
+      
       "@users/*": ["modules/users/*"],
       "@delivery/*": ["modules/deliveries/*"],
-    }
-  }
+    },
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    
+    "sourceMap": true,
+    "incremental": true,
+
+    "removeComments": true,
+    "declaration": false,
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "test",
+    "**/*.spec.ts",
+    "jest.config.ts",
+    "prisma"
+  ]
 }
